@@ -1,10 +1,11 @@
-
+import Header from "../components/Header"
 
 const Dashboard = ({ address }) => {
 
   return (
-   <div>{address}</div>
+   <Header />
   )
+
 }
 
 export default Dashboard
