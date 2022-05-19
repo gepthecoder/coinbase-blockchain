@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 
-const Header = () => {
-  
-
+const Header = ({walletAddress, connectWallet}) => {
   return (
       <Wrapper>
           <Title>Assets</Title>
           <ButtonsContainer>
+            <WalletLink>
+                <WalletLinkTitle>Wallet Connected</WalletLinkTitle>
+                <WalletAddress>
+                    {walletAddress.slice(0,7)}...{walletAddress.slice(35)}
+                </WalletAddress>
+            </WalletLink>
             <Button style={{backgroundColor: '#3773f5', color: '#000'}}>
                 Buy / Sell
             </Button>
@@ -59,7 +63,6 @@ const WalletLinkTitle = styled.div`
 `
 const WalletAddress = styled.div`
   font-size: 0.8rem;
-  /* color: #8a919e; */
 `
 
 const Button = styled.div`
