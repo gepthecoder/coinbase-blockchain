@@ -15,7 +15,6 @@ const Header = () => {
             </Button>
           </ButtonsContainer>
       </Wrapper>
-   
   )
 }
 
