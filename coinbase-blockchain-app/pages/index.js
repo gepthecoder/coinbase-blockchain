@@ -45,10 +45,20 @@ export default function Home() {
   const { address, connectWallet } = useWeb3()
 
   return (
-    <div>
-       <button onClick={() => connectWallet('injected')}>
-            Connect Wallet
-        </button>
-    </div>
+    <Wrapper>
+      {address ? (
+        <h2>{address}</h2>
+      ) : (
+        <WalletConnect>
+          <Button onClick={() => connectWallet('injected')}>
+              Connect Wallet
+          </Button>
+          <Details>
+              You need Chrome to be
+              <br /> able to run this app.
+          </Details>
+        </WalletConnect>
+      )}
+    </Wrapper>
   )
 }
