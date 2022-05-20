@@ -5,8 +5,12 @@ const TransferModal = () => {
   return (
     <Wrapper>
         <Selector>
-            <p>Send</p>
-            <p>Receive</p>
+            <Option>
+                <p>Send</p>
+            </Option>
+            <Option>
+                <p>Receive</p>
+            </Option>
         </Selector>
     </Wrapper>
   )
@@ -28,4 +32,17 @@ const Selector = styled.div`
   justify-content: space-evenly;
   align-items: center;
   height: 5rem;
+`
+
+const Option = styled.div`
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  &:hover {
+    cursor: pointer;
+    background-color: #111214;
+  }
 `
