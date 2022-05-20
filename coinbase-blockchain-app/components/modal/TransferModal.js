@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
+import Modal from 'react-modal/lib/components/Modal'
 
 const TransferModal = () => {
     const [action, setAction] = useState('send')
@@ -12,7 +13,16 @@ const TransferModal = () => {
         border: '1px solid #282b2f',
     }
 
-
+    const selectedModal = option => {
+        switch(option){
+            case 'send':
+                return <h2>Send</h2>
+            case 'receive':
+                return <h2>Receive</h2>
+            default:
+                return <h2>Send</h2>
+        }
+    }
 
     return (
         <Wrapper>
@@ -30,6 +40,9 @@ const TransferModal = () => {
                     <p>Receive</p>
                 </Option>
             </Selector>
+            <ModalMain>
+                {selectedModal(action)}
+            </ModalMain>
         </Wrapper>
     )
 }
@@ -63,4 +76,9 @@ const Option = styled.div`
     cursor: pointer;
     background-color: #111214;
   }
+`
+
+const ModalMain = styled.div`
+  padding: 1rem;
+  flex: 1;
 `
