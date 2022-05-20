@@ -4,21 +4,22 @@ import dogeLogo from '../assets/doge.png'
 import ethLogo from '../assets/eth.png'
 import lunaLogo from '../assets/luna.png'
 import solLogo from '../assets/sol.png'
+import burgerLogo from '../assets/burger.png'
 
 export const coins = [
   {
     name: 'Bitcoin',
     sign: 'BTC',
     logo: btcLogo,
-    balanceUsd: 230.32,
-    balanceCoin: 6.35667736,
-    priceUsd: 5.32,
+    balanceUsd: 46708.32,
+    balanceCoin: 2.35667736,
+    priceUsd: 28950.32,
     change: -4.74,
     allocation: 41.89,
   },
   {
     name: 'Solana',
-    sign: 'CRV',
+    sign: 'SOL',
     logo: solLogo,
     balanceUsd: 120.2,
     balanceCoin: 6.35667736,
@@ -30,8 +31,8 @@ export const coins = [
     name: 'Polygon',
     sign: 'MATIC',
     logo: maticLogo,
-    balanceUsd: 1.2,
-    balanceCoin: 3.35664236,
+    balanceUsd: 100.2,
+    balanceCoin: 60.35664236,
     priceUsd: 5.22,
     change: -5.24,
     allocation: 17.89,
@@ -40,20 +41,20 @@ export const coins = [
     name: 'Ethereum',
     sign: 'ETH',
     logo: ethLogo,
-    balanceUsd: 1.2,
+    balanceUsd: 6543.2,
     balanceCoin: 3.35664236,
-    priceUsd: 5.22,
+    priceUsd: 2011.22,
     change: 6.24,
     allocation: 17.89,
   },
   {
-    name: 'Terra',
-    sign: 'LUNA',
-    logo: lunaLogo,
-    balanceUsd: 1.2,
+    name: 'ComeBack',
+    sign: 'BURGER',
+    logo: burgerLogo,
+    balanceUsd: 10.25,
     balanceCoin: 3.35664236,
-    priceUsd: 5.22,
-    change: -5.24,
+    priceUsd: 50.22,
+    change: +100.24,
     allocation: 17.89,
   },
   {
