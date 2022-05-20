@@ -3,14 +3,17 @@ import { BsThreeDotsVertical } from 'react-icons/bs'
 import { coins } from '../static/coins'
 import Coin from './Coin'
 import BalanceChart from './BalanceChart'
+import { useEffect, useState } from 'react'
 
 
 const Portfolio = ({thirdWebTokens, sanityTokens, walletAddress}) => {
     
-    [/* Returns a promise */]
+    /* Returns a promise */
     // thirdWebTokens[0].balanceOf(walletAddress).then(
     //     balance => console.log(Number(balance.displayValue) * 150)
     // )
+
+    const [walletBalance, setWalletBalance]  = useState(0)
 
     /* Convert all of my TOKENS into USD */
     const tokenToUSD = {}
@@ -22,18 +25,22 @@ const Portfolio = ({thirdWebTokens, sanityTokens, walletAddress}) => {
 
     console.log(tokenToUSD)
 
-    const calculateBalance = async () => {
-        let total = 0
-        for (const token of thirdWebTokens ) {
-            const balance = await token.balanceOf(walletAddress)
-            total += Number(balance.displayValue) * tokenToUSD[token.address] 
-        }
-        console.log(total, '💸')
-        return total
-    }
-
-    calculateBalance()
     
+    useEffect(() => {
+        const calculateTotalBalance = async () => {
+          const totalBalance = await Promise.all(
+              thirdWebTokens.map(async token => {
+                    const balance = await token.balanceOf(walletAddress)
+                    return Number(balance.displayValue) * tokenToUSD[token.address]
+              })
+          )
+          setWalletBalance(totalBalance.reduce((acc, curr) => acc + curr, 0))
+        }
+
+        calculateTotalBalance()
+    }, [thirdWebTokens, sanityTokens])
+
+
     return (
         <Wrapper>
             <Content>
@@ -43,8 +50,7 @@ const Portfolio = ({thirdWebTokens, sanityTokens, walletAddress}) => {
                             <BalanceTitle>Portfolio balance</BalanceTitle>
                             <BalanceValue>
                                 {'$'}
-                                {/* {walletBalance.toLocaleString()} */}
-                                46,000
+                                {walletBalance.toLocaleString()}
                             </BalanceValue>
                         </Balance>
                     </div>
