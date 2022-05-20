@@ -3,88 +3,53 @@ import { BsThreeDotsVertical } from 'react-icons/bs'
 import { coins } from '../static/coins'
 import Coin from './Coin'
 import BalanceChart from './BalanceChart'
-import { useEffect, useState } from 'react'
-import { ThirdwebSDK } from '@3rdweb/sdk'
-import { ethers } from 'ethers'
 
-const sdk = new ThirdwebSDK(
-    new ethers.Wallet(
-        process.env.NEXT_PUBLIC_METAMASK_KEY,
-        ethers.getDefaultProvider(
-            'https://rinkeby.infura.io/v3/305492e0ffcc451c87997c1d83ecb119'
-        )
-    )
-)
 
 const Portfolio = () => {
-
-    const [sanityTokens, setSanityTokens] = useState([])
-    const [thirdWebTokens, setThirdWebTokens] = useState([])
-
-    useEffect(() => {
-        const getSanityAndThirdWebTokens = async () => {
-         
-            const coins = await fetch("https://r0608fwk.api.sanity.io/v1/data/query/production?query=*%5B_type%20%3D%3D%20%22coins%22%5D%20%7B%0A%20%20name%2C%0A%20%20usdPrice%2C%0A%20%20contractAddress%2C%0A%20%20symbol%2C%0A%20%20logo%0A%7D")
-            const sanityTokens = (await coins.json()).result
-            setSanityTokens(sanityTokens)
-
-            setThirdWebTokens(
-                sanityTokens.map(token => sdk.getTokenModule(token.contractAddress))
-            )
-           
-        }
-        getSanityAndThirdWebTokens()
-    }, [])
-
-    console.log('Sanity 👉', sanityTokens)
-    console.log('Thirdweb 👉', thirdWebTokens)
-
     return (
         <Wrapper>
-        <Content>
-            <Chart>
-                <div>
-                    <Balance>
-                        <BalanceTitle>Portfolio balance</BalanceTitle>
-                        <BalanceValue>
-                            {'$'}
-                            {/* {walletBalance.toLocaleString()} */}
-                            46,000
-                        </BalanceValue>
-                    </Balance>
-                </div>
-                <BalanceChart />
-            </Chart>
-            <PortfolioTable>
-                <TableItem>
-                    <Title>Your Assets</Title>
-                </TableItem>
-                <Divider />
-                <Table>
+            <Content>
+                <Chart>
+                    <div>
+                        <Balance>
+                            <BalanceTitle>Portfolio balance</BalanceTitle>
+                            <BalanceValue>
+                                {'$'}
+                                {/* {walletBalance.toLocaleString()} */}
+                                46,000
+                            </BalanceValue>
+                        </Balance>
+                    </div>
+                    <BalanceChart />
+                </Chart>
+                <PortfolioTable>
                     <TableItem>
-                        <TableRow>
-                            <div style={{flex:3}}>Name</div>
-                            <div style={{flex:2}}>Balance</div>
-                            <div style={{flex:1}}>Price</div>
-                            <div style={{flex:1}}>Allocation</div>
-                            <div style={{flex:0}}><BsThreeDotsVertical /></div>
-                        </TableRow>   
+                        <Title>Your Assets</Title>
                     </TableItem>
                     <Divider />
-                    <div>
-                        {coins.map( coin => (
-                            <div>
-                                <Coin coin={coin} />
-                                <Divider />
-                            </div>
-                        ))}
-                    </div>
-                </Table>
-            </PortfolioTable>
-        </Content>
+                    <Table>
+                        <TableItem>
+                            <TableRow>
+                                <div style={{flex:3}}>Name</div>
+                                <div style={{flex:2}}>Balance</div>
+                                <div style={{flex:1}}>Price</div>
+                                <div style={{flex:1}}>Allocation</div>
+                                <div style={{flex:0}}><BsThreeDotsVertical /></div>
+                            </TableRow>   
+                        </TableItem>
+                        <Divider />
+                        <div>
+                            {coins.map( coin => (
+                                <div>
+                                    <Coin coin={coin} />
+                                    <Divider />
+                                </div>
+                            ))}
+                        </div>
+                    </Table>
+                </PortfolioTable>
+            </Content>
         </Wrapper>
-
-
     )
 }
 
