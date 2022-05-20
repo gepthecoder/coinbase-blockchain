@@ -51,10 +51,10 @@ export const coins = [
     name: 'ComeBack',
     sign: 'BURGER',
     logo: burgerLogo,
-    balanceUsd: 10.25,
+    balanceUsd: 10263.25,
     balanceCoin: 3.35664236,
-    priceUsd: 50.22,
-    change: +100.24,
+    priceUsd: 750.22,
+    change: 15525.22,
     allocation: 17.89,
   },
   {
