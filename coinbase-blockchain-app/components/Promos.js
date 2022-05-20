@@ -14,7 +14,7 @@ const Promos = () => {
 
             <OfferCard>
                 <Title>Learn and Earn</Title>
-                <Description>Earn up CO 2.84% APY on your crypto</Description>
+                <Description>Earn up to 2.84% APY on your crypto</Description>
                 <Placeholder />
                 <Additional style={{ color: '#3773f5' }}>Verify Identity</Additional>
             </OfferCard>
