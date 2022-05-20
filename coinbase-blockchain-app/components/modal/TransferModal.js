@@ -1,19 +1,35 @@
 import styled from 'styled-components'
+import { useState } from 'react'
 
 const TransferModal = () => {
+    const [action, setAction] = useState('send')
 
-  return (
-    <Wrapper>
-        <Selector>
-            <Option>
-                <p>Send</p>
-            </Option>
-            <Option>
-                <p>Receive</p>
-            </Option>
-        </Selector>
-    </Wrapper>
-  )
+    const selectedStyle = {
+        color: '#3773f5',
+    }
+    
+      const unselectedStyle = {
+        border: '1px solid #282b2f',
+    }
+
+
+
+    return (
+        <Wrapper>
+            <Selector>
+                <Option
+                    style={action === 'send' ? selectedStyle : unselectedStyle}
+                >
+                    <p>Send</p>
+                </Option>
+                <Option
+                    style={action === 'receive' ? selectedStyle : unselectedStyle}
+                >
+                    <p>Receive</p>
+                </Option>
+            </Selector>
+        </Wrapper>
+    )
 }
 
 export default TransferModal
