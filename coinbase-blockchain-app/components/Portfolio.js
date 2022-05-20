@@ -6,9 +6,34 @@ import BalanceChart from './BalanceChart'
 
 
 const Portfolio = ({thirdWebTokens, sanityTokens, walletAddress}) => {
-    console.log(thirdWebTokens, '🧨')
-    console.log(sanityTokens, '🧨')
-    console.log(walletAddress, '🧨')
+    
+    [/* Returns a promise */]
+    // thirdWebTokens[0].balanceOf(walletAddress).then(
+    //     balance => console.log(Number(balance.displayValue) * 150)
+    // )
+
+    /* Convert all of my TOKENS into USD */
+    const tokenToUSD = {}
+
+    /* Links contract address of the token to usdPrice value */
+    for (const token of sanityTokens) {
+        tokenToUSD[token.contractAddress] = Number(token.usdPrice)
+    } 
+
+    console.log(tokenToUSD)
+
+    const calculateBalance = async () => {
+        let total = 0
+        for (const token of thirdWebTokens ) {
+            const balance = await token.balanceOf(walletAddress)
+            total += Number(balance.displayValue) * tokenToUSD[token.address] 
+        }
+        console.log(total, '💸')
+        return total
+    }
+
+    calculateBalance()
+    
     return (
         <Wrapper>
             <Content>
