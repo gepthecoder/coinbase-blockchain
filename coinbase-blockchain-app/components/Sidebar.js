@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { navItems } from '../static/navItems'
 
 const Sidebar = () => {
+    /* set default active icon and state to be assets */
   const [activeIcon, setActiveIcon] = useState(navItems[0].title)
 
   return (
