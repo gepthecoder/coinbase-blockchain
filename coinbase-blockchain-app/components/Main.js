@@ -2,13 +2,21 @@ import styled from 'styled-components'
 import Portfolio from './Portfolio'
 import Promos from './Promos'
 
-const Main = () => {
-  return (
-    <Wrapper>
-      <Portfolio />
-      <Promos />
-    </Wrapper>
-  )
+const Main = ({thirdWebTokens, sanityTokens, walletAddress}) => {
+    console.log(thirdWebTokens, '🎈')
+    console.log(sanityTokens, '🎈')
+    console.log(walletAddress, '🎈')
+
+    return (
+        <Wrapper>
+        <Portfolio
+            thirdWebTokens={thirdWebTokens}
+            sanityTokens={sanityTokens} 
+            walletAddress={walletAddress}
+        />
+        <Promos />
+        </Wrapper>
+    )
 }
 
 export default Main
