@@ -1,25 +1,41 @@
 import styled from 'styled-components'
+import Modal from 'react-modal'
+import { useRouter } from 'next/router'
+import TransferModal from './modal/TransferModal'
+import Link from 'next/link'
+
+/* ANCHOR TAG - TO MAKE A MODAL WORK FOR NEXT.JS */
+Modal.setAppElement('#__next')
 
 const Header = ({walletAddress, connectWallet}) => {
-  return (
-      <Wrapper>
-          <Title>Assets</Title>
-          <ButtonsContainer>
-            <WalletLink>
-                <WalletLinkTitle>Wallet Connected</WalletLinkTitle>
-                <WalletAddress>
-                    {walletAddress.slice(0,7)}...{walletAddress.slice(35)}
-                </WalletAddress>
-            </WalletLink>
-            <Button style={{backgroundColor: '#3773f5', color: '#000'}}>
-                Buy / Sell
-            </Button>
-            <Button>
-                Send / Receive
-            </Button>
-          </ButtonsContainer>
-      </Wrapper>
-  )
+    const router = useRouter()
+    
+    return (
+        <Wrapper>
+            <Title>Assets</Title>
+            <ButtonsContainer>
+                <WalletLink>
+                    <WalletLinkTitle>Wallet Connected</WalletLinkTitle>
+                    <WalletAddress>
+                        {walletAddress.slice(0,7)}...{walletAddress.slice(35)}
+                    </WalletAddress>
+                </WalletLink>
+                <Button style={{backgroundColor: '#3773f5', color: '#000'}}>
+                    Buy / Sell
+                </Button>
+                <Link href={'/?transfer=1'}>
+                    <Button>
+                        Send / Receive
+                    </Button>
+                </Link>
+            </ButtonsContainer>
+            <Modal
+                isOpen={!!router.query.transfer}
+                onRequestClose={() => router.push('/')}
+            >
+            </Modal>
+        </Wrapper>
+    )
 }
 
 export default Header
