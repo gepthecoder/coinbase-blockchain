@@ -1,20 +1,21 @@
 import styled from 'styled-components'
 
 const Promos = () => {
+
     return (
         <Wrapper>
             <OfferCard>
                 <Title>Yield earned</Title>
-                <Description>Earn up TO 7.77% APY on your crypto</Description>
+                <Description>Earn up to 7.77% APY on your crypto</Description>
                 <Placeholder />
                 <Additional style={{ fontSize: '1.5rem' }}>
-                    $0.000066 <span>2.84% APY</span>                    
+                    $0.000777 <span>7.77% APY</span>                    
                 </Additional>
             </OfferCard>
 
             <OfferCard>
                 <Title>Learn and Earn</Title>
-                <Description>Earn up to 2.84% APY on your crypto</Description>
+                <Description>Earn up to 7.77% APY on your crypto</Description>
                 <Placeholder />
                 <Additional style={{ color: '#3773f5' }}>Verify Identity</Additional>
             </OfferCard>
