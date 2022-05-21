@@ -17,7 +17,7 @@ const Transfer = ({ setAction, twTokens, selectedToken, walletAddress }) => {
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                     />
-                    <span>ETH</span>
+                    <span>EWT</span>
                 </FlexInputContainer>
                 <Warning style={{color: amount && '#0a0b0d'}}>Amount is a required field</Warning>
             </Amount>
@@ -35,9 +35,19 @@ const Transfer = ({ setAction, twTokens, selectedToken, walletAddress }) => {
                     />
                 </Row>
                 <Divider />
+                <Row>
+                    <FieldName>Pay with</FieldName>
+                    <CoinSelectList>
+                        <Icon>
+                            <img 
+                                src={'https://image.pngaaa.com/337/1387337-middle.png'} 
+                                alt=''
+                            />
+                        </Icon>
+                        <CoinName>Energy Web Token</CoinName>
+                    </CoinSelectList>
+                </Row>
             </TransferForm>
-
-
         </Wrapper>
     )
 }
