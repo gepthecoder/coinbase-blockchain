@@ -5,13 +5,14 @@ import imageUrlBuilder from '@sanity/image-url'
 import { client } from '../../lib/sanity'
 
 const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress, }) => {
-    const [amount, setAmount] = useState('')
+    const [amount, setAmount] = useState()
     const [recipient, setRecipient] = useState('')
+    const [imageUrl, setImageUrl] = useState(null)
 
     useEffect(() => {
         const url = imageUrlBuilder(client).image(selectedToken.logo).url()
-        console.log(url, '👑')
-    }, [])
+        setImageUrl(url)
+    }, [selectedToken])
 
     return (
         <Wrapper>
@@ -48,7 +49,7 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress, }) 
                     <CoinSelectList>
                         <Icon>
                             <img 
-                                src={'https://image.pngaaa.com/337/1387337-middle.png'} 
+                                src={imageUrl} 
                                 alt=''
                             />
                         </Icon>
