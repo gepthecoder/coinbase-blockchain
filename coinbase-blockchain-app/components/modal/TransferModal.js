@@ -5,6 +5,7 @@ import Transfer from './Transfer'
 import CoinSelector from './CoinSelector'
 import { BallTriangle } from 'react-loader-spinner'
 import Receive from './Receive'
+import { FaCheck } from 'react-icons/fa'
 
 
 const TransferModal = ({sanityTokens, thirdWebTokens, walletAddress}) => {
@@ -72,9 +73,11 @@ const TransferModal = ({sanityTokens, thirdWebTokens, walletAddress}) => {
                             fontSize: '1.5rem',
                             fontWeight: '600',
                             color: '#27ad75',
+                            flexDirection: 'column',
                         }}
                     >
                         <h3>Transfer completed</h3>
+                        <FaCheck style={{ color: '#27ad75' }} />
                     </div>
                 )
             default:
