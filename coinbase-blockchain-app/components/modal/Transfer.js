@@ -49,12 +49,17 @@ const Transfer = ({ setAction, twTokens, selectedToken, walletAddress }) => {
                         <CoinName>Energy Web Token</CoinName>
                     </CoinSelectList>
                 </Row>
-
-                <Row>
-                    <Continue>Continue</Continue>
-                </Row>
-
             </TransferForm>
+
+            <Row>
+                <Continue>Continue</Continue>
+            </Row>
+
+            <Row>
+                <BalanceTitle>EWT Balance</BalanceTitle>
+                <Balance>88.5 EWT</Balance>
+            </Row>
+
         </Wrapper>
     )
 }
@@ -190,3 +195,7 @@ const Continue = styled.button`
     background-color: #4a80f6;
   }
 `
+
+const BalanceTitle = styled.div``
+
+const Balance = styled.div``
