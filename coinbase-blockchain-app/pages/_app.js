@@ -1,19 +1,14 @@
 import '../styles/globals.css'
-import { ThirdwebWeb3Provider } from '@3rdweb/hooks'
-
-const supportedChainIds = [4]
-const connectors = {
-  injected: {},
-}
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 
 function MyApp({ Component, pageProps }) {
+
+  const desiredChainId = ChainId.Rinkeby;
+
   return(
-    <ThirdwebWeb3Provider
-      supportedChainIds={supportedChainIds}
-      connectors={connectors}
-    >
+    <ThirdwebProvider desiredChainId={desiredChainId}>
       <Component {...pageProps} />
-    </ThirdwebWeb3Provider>
+    </ThirdwebProvider>
   )
 }
 

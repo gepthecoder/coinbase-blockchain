@@ -3,18 +3,9 @@ import styled from "styled-components"
 import Main from '../components/Main'
 import Sidebar from "../components/Sidebar"
 import { useEffect, useState } from 'react'
-import { ThirdwebSDK } from '@3rdweb/sdk'
-import { ethers } from 'ethers'
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 
-const sdk = new ThirdwebSDK(
-    new ethers.Wallet(
-        process.env.NEXT_PUBLIC_METAMASK_KEY,
-        ethers.getDefaultProvider(
-            'https://rinkeby.infura.io/v3/305492e0ffcc451c87997c1d83ecb119'
-        )
-    )
-)
-
+const sdk = new ThirdwebSDK("rinkeby")
 
 const Dashboard = ({ address }) => {
 
@@ -29,7 +20,7 @@ const Dashboard = ({ address }) => {
             setSanityTokens(sanityTokens)
 
             setThirdWebTokens(
-                sanityTokens.map(token => sdk.getTokenModule(token.contractAddress))
+                sanityTokens.map(token => sdk.getToken(token.contractAddress))
             )
            
         }

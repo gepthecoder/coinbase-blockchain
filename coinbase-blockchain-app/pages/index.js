@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import { useWeb3 } from '@3rdweb/hooks'
 import Dashboard from './Dashboard'
+import {
+  useMetamask,
+  useAddress,
+} from '@thirdweb-dev/react';
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,7 +47,8 @@ const Details = styled.div`
 
 export default function Home() {
 
-  const { address, connectWallet } = useWeb3()
+  const connectWithMetamask = useMetamask();
+  const address = useAddress();
 
   return (
     <Wrapper>
@@ -51,7 +56,7 @@ export default function Home() {
         <Dashboard address={address} />
       ) : (
         <WalletConnect>
-          <Button onClick={() => connectWallet('injected')}>
+          <Button onClick={() => connectWithMetamask()}>
               Connect Wallet
           </Button>
           <Details>
