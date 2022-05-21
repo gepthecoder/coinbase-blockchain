@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Modal from 'react-modal/lib/components/Modal'
 import Transfer from './Transfer'
 import CoinSelector from './CoinSelector'
+import { BallTriangle } from 'react-loader-spinner'
+
 
 const TransferModal = ({sanityTokens, thirdWebTokens, walletAddress}) => {
     const [action, setAction] = useState('send')
@@ -35,6 +37,12 @@ const TransferModal = ({sanityTokens, thirdWebTokens, walletAddress}) => {
                     thirdWebTokens={thirdWebTokens}
                     walletAddress={walletAddress}
                 />
+            case 'transferring':
+                return <div><h2>transferring ...</h2>
+                    <BallTriangle color="#00BFFF" height={50} width={50} />
+                    </div>
+            case 'transferred':
+                return <h2 style={{color: 'green'}}>transferred completed</h2>
             default:
                 return <h2>Send</h2>
         }
