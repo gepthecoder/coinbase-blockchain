@@ -38,11 +38,38 @@ const TransferModal = ({sanityTokens, thirdWebTokens, walletAddress}) => {
                     walletAddress={walletAddress}
                 />
             case 'transferring':
-                return <div><h2>transferring ...</h2>
-                    <BallTriangle color="#00BFFF" height={50} width={50} />
+                return (
+                    <div
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontSize: '1.5rem',
+                        }}>
+                            <h3>Transfer In Progress</h3>  
+                            <BallTriangle color="#3773f5" height={50} width={50} />
                     </div>
+                )
             case 'transferred':
-                return <h2 style={{color: 'green'}}>transferred completed</h2>
+                return (
+                    <div
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontSize: '1.5rem',
+                            fontWeight: '600',
+                            color: '#27ad75',
+                        }}
+                    >
+                        <h3>Transfer completed</h3>
+                    </div>
+                )
             default:
                 return <h2>Send</h2>
         }
