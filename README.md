@@ -2,7 +2,7 @@
 Coinbase Blockchain Web 3.0 dApp with Next.js | Sanity.io | thirdweb
 
 #
-💱https://coinbase-blockchain-app-beta.vercel.app/💱
+💱https://coinbase-blockchain-app-beta.vercel.app/
 #
 
 ![image](https://user-images.githubusercontent.com/38008294/169656302-67eda1cb-e582-4c27-8341-615feb3400cd.png)
