@@ -34,7 +34,9 @@ const Transfer = ({ setAction, twTokens, selectedToken, walletAddress }) => {
                         onChange={e => setRecipient(e.target.value)}
                     />
                 </Row>
+
                 <Divider />
+
                 <Row>
                     <FieldName>Pay with</FieldName>
                     <CoinSelectList>
@@ -47,6 +49,11 @@ const Transfer = ({ setAction, twTokens, selectedToken, walletAddress }) => {
                         <CoinName>Energy Web Token</CoinName>
                     </CoinSelectList>
                 </Row>
+
+                <Row>
+                    <Continue>Continue</Continue>
+                </Row>
+
             </TransferForm>
         </Wrapper>
     )
