@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Modal from 'react-modal/lib/components/Modal'
 import Transfer from './Transfer'
 
-const TransferModal = ({sanityTokens}) => {
+const TransferModal = ({sanityTokens, thirdWebTokens, walletAddress}) => {
     const [action, setAction] = useState('send')
     const [selectedToken, setSelectedToken] = useState(sanityTokens[0])
 
@@ -18,7 +18,11 @@ const TransferModal = ({sanityTokens}) => {
     const selectedModal = option => {
         switch(option){
             case 'send':
-                return <Transfer selectedToken={selectedToken}/>
+                return <Transfer selectedToken={selectedToken}
+                setAction={setAction}
+                thirdWebTokens={thirdWebTokens}
+                walletAddress={walletAddress}
+                />
             case 'receive':
                 return <h2>Receive</h2>
             default:
