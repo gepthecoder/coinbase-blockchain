@@ -8,6 +8,14 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress, }) 
     const [amount, setAmount] = useState()
     const [recipient, setRecipient] = useState('')
     const [imageUrl, setImageUrl] = useState(null)
+    const [activeThirdWebToken, setActiveThirdWebToken] = useState()
+
+    useEffect(() => {
+        const activeToken = thirdWebTokens.find(
+            token => token.address === selectedToken.contractAddress
+        )
+        console.log(activeToken, '🎠')
+    }, [thirdWebTokens, selectedToken])
 
     useEffect(() => {
         const url = imageUrlBuilder(client).image(selectedToken.logo).url()
@@ -24,7 +32,7 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress, }) 
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                     />
-                    <span>EWT</span>
+                    <span>{selectedToken.symbol}</span>
                 </FlexInputContainer>
                 <Warning style={{color: amount && '#0a0b0d'}}>Amount is a required field</Warning>
             </Amount>
@@ -53,7 +61,7 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress, }) 
                                 alt=''
                             />
                         </Icon>
-                        <CoinName>Energy Web Token</CoinName>
+                        <CoinName>{selectedToken.name}</CoinName>
                     </CoinSelectList>
                 </Row>
             </TransferForm>
@@ -63,8 +71,8 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress, }) 
             </Row>
 
             <Row>
-                <BalanceTitle>EWT Balance</BalanceTitle>
-                <Balance>88.5 EWT</Balance>
+                <BalanceTitle>{selectedToken.symbol} Balance</BalanceTitle>
+                <Balance>88.5 {selectedToken.symbol}</Balance>
             </Row>
 
         </Wrapper>
