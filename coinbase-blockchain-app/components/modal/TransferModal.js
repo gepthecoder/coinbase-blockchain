@@ -3,8 +3,9 @@ import { useState } from 'react'
 import Modal from 'react-modal/lib/components/Modal'
 import Transfer from './Transfer'
 
-const TransferModal = () => {
+const TransferModal = ({sanityTokens}) => {
     const [action, setAction] = useState('send')
+    const [selectedToken, setSelectedToken] = useState(sanityTokens[0])
 
     const selectedStyle = {
         color: '#3773f5',
@@ -17,7 +18,7 @@ const TransferModal = () => {
     const selectedModal = option => {
         switch(option){
             case 'send':
-                return <Transfer />
+                return <Transfer selectedToken={selectedToken}/>
             case 'receive':
                 return <h2>Receive</h2>
             default:
