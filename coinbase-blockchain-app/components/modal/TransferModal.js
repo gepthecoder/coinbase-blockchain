@@ -4,6 +4,7 @@ import Modal from 'react-modal/lib/components/Modal'
 import Transfer from './Transfer'
 import CoinSelector from './CoinSelector'
 import { BallTriangle } from 'react-loader-spinner'
+import Receive from './Receive'
 
 
 const TransferModal = ({sanityTokens, thirdWebTokens, walletAddress}) => {
@@ -27,7 +28,13 @@ const TransferModal = ({sanityTokens, thirdWebTokens, walletAddress}) => {
                 walletAddress={walletAddress}
                 />
             case 'receive':
-                return <h2>Receive</h2>
+                return(
+                    <Receive
+                        setAction={setAction}
+                        selectedToken={selectedToken}
+                        walletAddress={walletAddress}
+                    />
+                )
             case 'select':
                 return <CoinSelector
                     setAction={setAction}
