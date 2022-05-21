@@ -1,13 +1,26 @@
 import styled from 'styled-components'
+import { useEffect, useState } from 'react'
 
 
 const Transfer = ({ setAction, twTokens, selectedToken, walletAddress }) => {
+    const [amount, setAmount] = useState('')
 
-  return (
-      <Wrapper>
-        <h2>Thats kinda cool</h2>
-      </Wrapper>
-  )
+    return (
+        <Wrapper>
+            <Amount>
+                <FlexInputContainer>
+                    <FlexInput
+                        placeholder='0'
+                        type='number'
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                    />
+                    <span>ETH</span>
+                </FlexInputContainer>
+                <Warning style={{color: amount && '#0a0b0d'}}>Amount is a required field</Warning>
+            </Amount>
+        </Wrapper>
+    )
 }
 
 export default Transfer
@@ -17,4 +30,45 @@ const Wrapper = styled.div`
   flex-direction: column;
   height: 100%;
   flex: 1;
+`
+
+const Amount = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`
+
+const FlexInputContainer = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  & > span {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #3773f5;
+  }
+`
+
+const FlexInput = styled.input`
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 1.2rem;
+  text-wrap: wrap;
+  text-align: right;
+  max-width: 45%;
+  margin-right: 1rem;
+  font-size: 4.5rem;
+  color: #3773f5;
+  &::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+`
+const Warning = styled.div`
+  /* TRouBLe */
+  padding: 1rem 0 2rem 0;
+  text-align: center;
+  color: #8a919e;
 `
