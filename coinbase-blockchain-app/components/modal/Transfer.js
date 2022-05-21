@@ -38,7 +38,7 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress, }) 
     }, [activeThirdWebToken])
 
     /* CRYPTO TRANSFERS */
-    const sendCrypto = async () => {
+    const sendCrypto = async (amount, recipient) => {
         console.log('sending crypto ...')
     
         if (activeThirdWebToken && amount && recipient) {
@@ -86,7 +86,7 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress, }) 
 
                 <Row>
                     <FieldName>Pay with</FieldName>
-                    <CoinSelectList>
+                    <CoinSelectList onClick={() => setAction('select')}>
                         <Icon>
                             <img 
                                 src={imageUrl} 
@@ -99,7 +99,7 @@ const Transfer = ({ selectedToken, setAction, thirdWebTokens, walletAddress, }) 
             </TransferForm>
 
             <Row>
-                <Continue onClick={() => sendCrypto()}>Continue</Continue>
+                <Continue onClick={() => sendCrypto(amount, recipient)}>Continue</Continue>
             </Row>
 
             <Row>
