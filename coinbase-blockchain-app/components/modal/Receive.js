@@ -8,12 +8,11 @@ import { FaCheck } from 'react-icons/fa'
 const Receive = ({ setAction, selectedToken, walletAddress }) => {
   const [imageUrl, setImageUrl] = useState(null)
   const [copied, setCopied] = useState(false)
-  const [builder] = useState(imageUrlBuilder(client))
 
   useEffect(() => {
-    const url = builder.image(selectedToken.logo).url()
+    const url = imageUrlBuilder(client).image(selectedToken.logo).url()
     setImageUrl(url)
-  }, [selectedToken, builder])
+  }, [selectedToken])
 
   return (
     <Wrapper>
@@ -24,6 +23,30 @@ const Receive = ({ setAction, selectedToken, walletAddress }) => {
             alt=''
           />
         </QRContainer>
+        <Divider />
+        <Row>
+          <CoinSelectList onClick={() => setAction('select')}>
+            <Icon>
+              <img src={imageUrl} alt='' />
+            </Icon>
+            <CoinName>{selectedToken.name}</CoinName>
+          </CoinSelectList>
+        </Row>
+        <Divider />
+        <Row>
+          <div>
+            <Title>{selectedToken.symbol} Address</Title>
+            <Address>{selectedToken.contractAddress}</Address>
+          </div>
+          <CopyButton
+            onClick={() => {
+              navigator.clipboard.writeText(selectedToken.contractAddress)
+              setCopied(true)
+            }}
+          >
+            {copied ? <FaCheck style={{ color: '#27ad75' }} /> : <BiCopy />}
+          </CopyButton>
+        </Row>
       </Content>
     </Wrapper>
   )
