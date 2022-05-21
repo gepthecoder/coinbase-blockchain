@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
+import { FaWallet } from 'react-icons/fa'
 
 
 const Transfer = ({ setAction, twTokens, selectedToken, walletAddress }) => {
     const [amount, setAmount] = useState('')
+    const [recipient, setRecipient] = useState('')
 
     return (
         <Wrapper>
@@ -19,6 +21,23 @@ const Transfer = ({ setAction, twTokens, selectedToken, walletAddress }) => {
                 </FlexInputContainer>
                 <Warning style={{color: amount && '#0a0b0d'}}>Amount is a required field</Warning>
             </Amount>
+
+            <TransferForm>
+                <Row>
+                    <FieldName>To</FieldName>
+                    <Icon>
+                        <FaWallet></FaWallet>
+                    </Icon>
+                    <Recipient 
+                        placeholder='Address'
+                        value={recipient}
+                        onChange={e => setRecipient(e.target.value)}
+                    />
+                </Row>
+                <Divider />
+            </TransferForm>
+
+
         </Wrapper>
     )
 }
@@ -71,4 +90,86 @@ const Warning = styled.div`
   padding: 1rem 0 2rem 0;
   text-align: center;
   color: #8a919e;
+`
+
+const Divider = styled.div`
+  border-bottom: 1px solid #282b2f;
+`
+
+const TransferForm = styled.div`
+  border: 1px solid #282b2f;
+  border-radius: 0.4rem;
+`
+
+const Row = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #8a919e;
+  padding: 1rem 0;
+  font-size: 1.2rem;
+`
+const FieldName = styled.div`
+  flex: 0.5;
+  padding-left: 2rem;
+`
+
+const Icon = styled.div`
+  margin-right: 1rem;
+  height: 1.8rem;
+  width: 1.8rem;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  & > img {
+    height: 120%;
+    width: 120%;
+    object-fit: cover;
+  }
+`
+
+const Recipient = styled.input`
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 1.2rem;
+  text-wrap: wrap;
+  margin-right: 0.5rem;
+`
+
+const CoinSelectList = styled.div`
+  display: flex;
+  flex: 1.3;
+  height: 100%;
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+const CoinName = styled.div`
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  font-size: 1.2rem;
+  text-wrap: wrap;
+  margin-right: 0.5rem;
+`
+
+const Continue = styled.button`
+  color: white;
+  width: 100%;
+  background-color: #3773f5;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+  &:hover {
+    cursor: pointer;
+    background-color: #4a80f6;
+  }
 `
